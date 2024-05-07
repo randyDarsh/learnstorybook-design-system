@@ -1,4 +1,5 @@
 
+
 # Name of our action
 name: 'Chromatic'
 # The event that will trigger the action
@@ -6,10 +7,9 @@ on: push
 
 # What the action will do
 jobs:
+  # Run interaction tests
   interaction-tests:
-    # The operating system it will run on
     runs-on: ubuntu-latest
-    # The list of steps that the action will go through
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -23,10 +23,9 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook --quiet
       - name: Serve Storybook and run tests
-        run: npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && yarn test-storybook"
-visual-tests:
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue"             "npx http-server storybook-static --port 6006 --silent"             "npx wait-on tcp:6006 && yarn test-storybook"
+  visual-tests:
     # The operating system it will run on
     runs-on: ubuntu-latest
     # The list of steps that the action will go through

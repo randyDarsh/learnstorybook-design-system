@@ -10,6 +10,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "build-storybook-docs": "storybook build --docs",
     "build": "rollup -c --bundleConfigAsCjs",
     "watch": "rollup --watch -c --bundleConfigAsCjs",
     "clean": "rimraf ./dist",
@@ -33,6 +34,8 @@
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-terser": "^0.4.3",
+    "@storybook/addon-a11y": "^8.0.10",
+    "@storybook/addon-coverage": "^1.0.3",
     "@storybook/addon-essentials": "^8.0.10",
     "@storybook/addon-interactions": "^8.0.10",
     "@storybook/addon-links": "^8.0.10",

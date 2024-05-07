@@ -26,20 +26,20 @@ jobs:
         run: npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:6006 && yarn test-storybook"
-  visual-tests:
-      #the os it will run on
-      runs-on: ubuntu-latest
-      #the list of steps that the action will go through
-      steps:
-       - uses: actions/checkout@v4
+visual-tests:
+    # The operating system it will run on
+    runs-on: ubuntu-latest
+    # The list of steps that the action will go through
+    steps:
+      - uses: actions/checkout@v4
         with:
           #👇 Fetches all history so Chromatic can compare against previous builds
           fetch-depth: 0
-       - uses: actions/setup-node@v3
-        with:           
+      - uses: actions/setup-node@v3
+        with:
           #👇 Sets the version of Node.js to use
           node-version: 20
-        - run: yarn
+      - run: yarn
         #👇 Adds Chromatic as a step in the workflow
       - uses: chromaui/action@v1
         # Options required for Chromatic's GitHub Action
